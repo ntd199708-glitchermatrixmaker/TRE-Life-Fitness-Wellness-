@@ -1,0 +1,60 @@
+# 🏃 TRE Fit Life Wellness
+
+### Your Ultimate Fitness Companion
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Expo](https://img.shields.io/badge/Expo-48.0.0-blue.svg)](https://expo.dev)
+[![React Native](https://img.shields.io/badge/React_Native-0.71.0-61DAFB.svg)](https://reactnative.dev)
+
+---
+
+## 📱 Overview
+
+**TRE Fit Life Wellness** is a freemium fitness tracking app that combines:
+- 🗺️ GPS run/walk tracking with navigation
+- ⚡ Real-time stats (distance, steps, pace, time)
+- 💧 Smart hydration & nutrition reminders
+- 🚧 Pro safety alerts (traffic & road blocks)
+- 🛍️ Integrated shop (trendy.lk)
+- ⭐ Freemium model with Pro features
+
+---
+
+## ✨ Features
+
+### Free Version
+- GPS tracking with map route visualization
+- Step counter & distance tracking
+- Live pace & time display
+- Hydration/food reminders
+- Shop integration (trendy.lk)
+
+### Pro Version ($4.99/mo)
+- Advanced safety alerts (traffic/road blocks)
+- Premium workout plans
+- Ad-free experience
+- Priority support
+- Advanced analytics
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v16+)
+- npm or yarn
+- Expo CLI
+- iOS/Android phone with Expo Go app
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/TRE-Fit-Life-Wellness.git
+cd TRE-Fit-Life-Wellness
+
+# Install dependencies
+npm install
+
+# Start development server
+npx expo start
