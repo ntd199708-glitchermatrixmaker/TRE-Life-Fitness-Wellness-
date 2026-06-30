@@ -1,0 +1,94 @@
+import { useState, useRef, useEffect } from 'react';
+import * as Location from 'expo-location';
+import { calculateDistance } from '../utils/locationHelper';
+
+export const useWorkout = () => {
+  const [isTracking, setIsTracking] = useState(false);
+  const [distance, setDistance] = useState(0);
+  const [steps, setSteps] = useState(0);
+  const [time, setTime] = useState(0);
+  const [route, setRoute] = useState([]);
+  const [currentLocation, setCurrentLocation] = useState(null);
+
+  const watchRef = useRef(null);
+  const timerRef = useRef(null);
+  const lastPositionRef = useRef(null);
+
+  const startWorkout = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      throw new Error('Location permission denied');
+    }
+
+    setIsTracking(true);
+    setDistance(0);
+    setSteps(0);
+    setTime(0);
+    setRoute([]);
+    lastPositionRef.current = null;
+
+    watchRef.current = await Location.watchPositionAsync(
+      {
+        accuracy: Location.Accuracy.High,
+        timeInterval: 1000,
+        distanceInterval: 1,
+      },
+      (newLocation) => {
+        const { latitude, longitude } = newLocation.coords;
+        setCurrentLocation({ latitude, longitude });
+
+        if (lastPositionRef.current) {
+          const delta = calculateDistance(
+            lastPositionRef.current.latitude,
+            lastPositionRef.current.longitude,
+            latitude,
+            longitude
+          );
+          if (delta > 0.01) {
+            setDistance((d) => d + delta);
+            setSteps((s) => s + Math.floor(delta * 1300));
+          }
+        }
+        lastPositionRef.current = { latitude, longitude };
+        setRoute((prev) => [...prev, { latitude, longitude }]);
+      }
+    );
+
+    timerRef.current = setInterval(() => {
+      setTime((t) => t + 1);
+    }, 1000);
+  };
+
+  const stopWorkout = () => {
+    setIsTracking(false);
+    if (watchRef.current) watchRef.current.remove();
+    if (timerRef.current) clearInterval(timerRef.current);
+  };
+
+  const resetWorkout = () => {
+    setDistance(0);
+    setSteps(0);
+    setTime(0);
+    setRoute([]);
+    lastPositionRef.current = null;
+  };
+
+  useEffect(() => {
+    return () => {
+      if (watchRef.current) watchRef.current.remove();
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
+
+  return {
+    isTracking,
+    distance,
+    steps,
+    time,
+    route,
+    currentLocation,
+    startWorkout,
+    stopWorkout,
+    resetWorkout,
+  };
+};
