@@ -1,0 +1,11 @@
+TRE-Fit-Life-Wellness/
+├── App.js                 # Main application entry
+├── src/
+│   ├── components/        # Reusable UI components
+│   ├── screens/           # Screen views
+│   ├── utils/             # Helper functions
+│   ├── hooks/             # Custom React hooks
+│   └── config/            # Configuration files
+├── assets/                # Images, fonts, etc.
+├── package.json           # Dependencies
+└── README.md             # Documentation
