@@ -1,0 +1,11 @@
+# Install EAS CLI
+npm install -g eas-cli
+
+# Login to Expo
+eas login
+
+# Build APK
+eas build --platform android
+
+# Download the APK from the link provided
+# Install on your Android phone
