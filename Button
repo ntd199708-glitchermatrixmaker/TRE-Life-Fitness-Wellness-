@@ -1,0 +1,47 @@
+import React from 'react';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+
+export default function ReminderButton({ icon, label, onPress, isPro = false }) {
+  return (
+    <TouchableOpacity
+      style={[styles.button, isPro && styles.proButton]}
+      onPress={onPress}
+    >
+      <Text style={styles.icon}>{icon}</Text>
+      <Text style={styles.label}>{label}</Text>
+      {isPro && <Text style={styles.proTag}>PRO</Text>}
+    </TouchableOpacity>
+  );
+}
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    alignItems: 'center',
+    minWidth: 70,
+    elevation: 1,
+  },
+  proButton: {
+    backgroundColor: '#FFD700',
+    borderWidth: 1,
+    borderColor: '#FFA500',
+  },
+  icon: {
+    fontSize: 24,
+  },
+  label: {
+    fontSize: 12,
+    marginTop: 4,
+    color: '#333',
+    fontWeight: '500',
+  },
+  proTag: {
+    fontSize: 8,
+    color: '#FF6B35',
+    fontWeight: 'bold',
+    marginTop: 2,
+  },
+});
