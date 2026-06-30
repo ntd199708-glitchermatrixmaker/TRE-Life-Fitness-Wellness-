@@ -1,0 +1,16 @@
+# 1. Initialize git
+git init
+
+# 2. Add all files
+git add .
+
+# 3. Commit
+git commit -m "Initial commit: TRE Fit Life Wellness v1.0"
+
+# 4. Create repo on GitHub.com
+# (Click "New" and name it "TRE-Fit-Life-Wellness")
+
+# 5. Add remote and push
+git remote add origin https://github.com/yourusername/TRE-Fit-Life-Wellness.git
+git branch -M main
+git push -u origin main
