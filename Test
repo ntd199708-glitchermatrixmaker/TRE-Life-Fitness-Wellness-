@@ -1,0 +1,7 @@
+# Create fresh test app
+npx create-expo-app TestApp
+cd TestApp
+npx expo start
+
+# Scan QR code - if this works, the problem is your app files
+# If it doesn't work, the problem is your Expo setup
