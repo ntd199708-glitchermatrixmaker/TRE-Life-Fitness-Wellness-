@@ -1,0 +1,25 @@
+TRE-Fit-Life-Wellness/
+├── .gitignore
+├── README.md
+├── LICENSE
+├── package.json
+├── app.json
+├── App.js
+├── .env.example
+├── src/
+│   ├── components/
+│   │   ├── StatBox.js
+│   │   └── ReminderButton.js
+│   ├── screens/
+│   │   └── HomeScreen.js
+│   ├── utils/
+│   │   ├── locationHelper.js
+│   │   ├── notificationHelper.js
+│   │   └── formatHelpers.js
+│   ├── hooks/
+│   │   └── useWorkout.js
+│   └── config/
+│       └── firebase.js
+└── assets/
+    ├── icon.png
+    └── splash.png
